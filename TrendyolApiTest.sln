@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendyolApiTest", "TrendyolApiTest\TrendyolApiTest.csproj", "{F75AA7A9-7650-42D4-83F4-E6628D9B06AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F75AA7A9-7650-42D4-83F4-E6628D9B06AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F75AA7A9-7650-42D4-83F4-E6628D9B06AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F75AA7A9-7650-42D4-83F4-E6628D9B06AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F75AA7A9-7650-42D4-83F4-E6628D9B06AA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2E25BA9A-7454-4289-B294-10D2312C7118}
+	EndGlobalSection
+EndGlobal
