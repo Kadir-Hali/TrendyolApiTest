@@ -3,23 +3,26 @@ using System.Text;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+
 namespace TrendyolApiTest
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             RunAsync().Wait();
-            Console.ReadLine();
+            //Console.ReadLine();
+            
         }
-        static async Task RunAsync()
+        static async Task<List<Brand>> RunAsync()
         {
             string username = AccountInfo.username;
             string password = AccountInfo.password;
             string supplierID = AccountInfo.supplierID;
 
-            using (var client = new HttpClient())
-            {
+                HttpClient client = new HttpClient();
                 // Send HTTP requests
                 client.BaseAddress = new Uri(URLs.BaseURL);
                 client.DefaultRequestHeaders.Accept.Clear();
@@ -28,8 +31,24 @@ namespace TrendyolApiTest
 
                 //await GetAllProducts(supplierID, client);
                 //await GetBrands(client);
-                await GetReturnAdress(supplierID, client);
-            }
+                //await GetReturnAdress(supplierID, client);
+
+                List<Brand> brands = new List<Brand>();
+
+                HttpResponseMessage response = await client.GetAsync(URLs.Brands);
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonString = await response.Content.ReadAsStringAsync();
+                    var brandList=JsonConvert.DeserializeObject<BrandList>(jsonString);
+
+                    if (brandList !=null)
+                    {
+                        brands.AddRange(brandList.Brands);
+                    }
+                    
+                }
+            return brands;
+
         }
         private static async Task GetReturnAdress(string supplierID, HttpClient client)
         {
@@ -49,6 +68,7 @@ namespace TrendyolApiTest
                 Console.WriteLine(response.ToString());
                 string product = await response.Content.ReadAsStringAsync();
                 Console.WriteLine(await response.Content.ReadAsStringAsync());
+                
             }
         }
         private static async Task GetBrands(HttpClient client)
